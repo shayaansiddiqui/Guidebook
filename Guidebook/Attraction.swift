@@ -1,9 +1,9 @@
-//
-//  Attraction.swift
-//  Guidebook
-//
-//  Created by Shayaan Siddiqui on 10/27/25.
-//
+	//
+	//  Attraction.swift
+	//  Guidebook
+	//
+	//  Created by Shayaan Siddiqui on 10/27/25.
+	//
 
 import Foundation
 
