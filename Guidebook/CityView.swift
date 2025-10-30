@@ -19,13 +19,12 @@ struct CityView: View {
 						NavigationLink(destination: {
 							AttractionView(city: city)
 						}, label: {
-							Text(city.name)
-								.font(Font.largeTitle)
+							CityCard(city: city)
 						})
 						
 					}
 				}
-			}.padding()
+			}.padding(.horizontal)
 		}
 		.onAppear() {
 			cities = dataService.getData()
