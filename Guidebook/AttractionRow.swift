@@ -17,7 +17,8 @@ struct AttractionRow: View {
 				.frame(height: 120)
 				.cornerRadius(15)
 			Text(attraction.name)
-				.font(.largeTitle.bold())
+				.bold()
+				.font(.largeTitle)
 			Text(attraction.summary)
 				.multilineTextAlignment(.leading)
 		}

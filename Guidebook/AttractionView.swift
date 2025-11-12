@@ -10,20 +10,24 @@ import SwiftUI
 struct AttractionView: View {
 	var city: City
 	var body: some View {
-		ScrollView {
-			VStack {
-				ForEach(city.attractions) { attraction in
-					NavigationLink(destination: {
-						DetailView(attraction: attraction)
-					}, label: {
-						AttractionRow(attraction: attraction)
-							.padding(.bottom, 50)
-					})
-					.buttonStyle(.plain)
-				}
-			}
-		}
-		.padding(.horizontal, 20)
+        GeometryReader { geometry in
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    ForEach(city.attractions) { attraction in
+                        NavigationLink(destination: {
+                            DetailView(attraction: attraction)
+                        }, label: {
+                            AttractionRow(attraction: attraction)
+                                .padding(.bottom, 50)
+                        })
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+            .background(Color(.black))
+            .frame(width: geometry.size.width)
+        }
 	}
 }
 
