@@ -22,7 +22,6 @@ struct AttractionRow: View {
 			Text(attraction.summary)
 				.multilineTextAlignment(.leading)
 		}
-		.foregroundColor(.white)
     }
 }
 
