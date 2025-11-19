@@ -25,6 +25,30 @@ struct DetailView: View {
                             .bold(true)
                         Text(attraction.longDescription)
                             .multilineTextAlignment(.leading)
+                        
+                        // Create URL
+                        if let url = URL(string: "maps://?q=\(cleanAttractionName(name: attraction.name))&sll=\(cleanAttractionLatLong(latLong: attraction.latLong))&z=10&t=s") {
+                            // Test if URL can be opened
+                            if UIApplication.shared.canOpenURL(url) {
+                                Button(action: {
+                                    // Open URL
+                                    UIApplication.shared.open(url)
+                                }, label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .foregroundColor(.blue)
+                                            .frame(height: 40)
+                                        Text("Get Directions")
+                                            .foregroundColor(.white)
+                                    }
+                                })
+                                
+                            }
+                            
+                        }
+                        
+                        
+                        
                     }
                     .padding(.bottom, 20)
                 }
@@ -34,6 +58,15 @@ struct DetailView: View {
             .frame(width: geometry.size.width)
         }
         .ignoresSafeArea()
+    }
+    func cleanAttractionName(name: String) -> String {
+        let cleanName = name.replacingOccurrences(of: " ", with: "+").folding(options: .diacriticInsensitive, locale: .current)
+        return cleanName
+    }
+    
+    func cleanAttractionLatLong(latLong: String) -> String {
+        let cleanLatLong = latLong.replacingOccurrences(of: " ", with: "")
+        return cleanLatLong
     }
 }
 
